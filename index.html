@@ -1,10 +1,291 @@
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale="1">
         <title>vakye</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
+        <style>
+            :root {
+                --black: #000;
+                --white: #fff;
+                --gray: #bbb;
+                --gray-light: rgba(255, 255, 255, 0.5);
+                --white-light: rgba(255, 255, 255, 0.1);
+                --black-light: rgba(0, 0, 0, 0.4);
+                --bg: #f5fbfe;
+                --color: #555555;
+                --highlight: var(--white--light);
+                --signature: rgba(130,160,230,255);
+            }
+
+            html {
+                font-size: 20px;
+                font-family: Comic Mono;
+                line-height: 1.4;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--color);
+                min-width: 320px;
+                height: 100%;
+            }
+
+            .load * {
+                transition: opacity 200ms, background 200ms, color 200ms;
+           }
+
+            *, ::before, ::after {
+                box-sizing: border-box;
+            }
+
+            .content {
+                max-width: 46rem;
+                margin: 0 auto;
+                width: 100%;
+            }
+
+            .pad-large {
+                padding: 1rem;
+            }
+
+            .pad-small {
+                padding: 0.5rem;
+            }
+
+            .flex-x {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .flex-y {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .flex-1 {
+                flex: 1;
+            }
+
+            .pad-extra-smol: {
+                padding: 0.5rem;
+            }
+
+            .inline-flex {
+                display: inline-flex;
+            }
+
+            .center {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .font-big {
+                font-size: 30px;
+            }
+
+            .font-bold {
+                font-weight: 900;
+            }
+
+            a {
+                color: inherit;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            a:hover {
+                opacity: 75%;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .signature-color {
+                color: var(--signature);
+            }
+
+            .inline-block {
+                display: inline-block;
+            }
+
+            .size-medium {
+                width: 1.75rem;
+                height: 1.75rem;
+            }
+
+            svg {
+                fill: currentColor;
+            }
+
+            .csy-large :not(:last-child) {
+                margin-bottom: 4rem;
+            }
+
+            .csy-medium :not(:last-child) {
+                margin-bottom: 1rem;
+            }
+
+            .marb-stuff {
+                margin-bottom: 0rem;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 1.0rem;
+                row-gap: 0.0rem;
+                grid-auto-rows: 1fr;
+            }
+
+            .row-contents {
+                display: contents;
+            }
+
+            .padx-stuff {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .pady-stuff {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .flipped-bg-signature {
+                background: var(--signature);
+                color: var(--bg);
+            }
+
+            .font-little-bit-larger {
+                font-size: 22px;
+            }
+
+            .font-little-bit-smol {
+                font-size: 16px;
+            }
+
+            .round {
+                border-radius: 2.0rem;
+            }
+
+            .center-x {
+                justify-content: center;
+                align-items: center;
+            }
+
+            .finite-bg-container {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+
+            .border-stuff {
+                border-radius: 0.0rem;
+                border-style: dotted;
+                border-color: var(--signature);
+            }
+
+            .controls-container {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 1.0rem;
+                row-gap: 0.0rem;
+                grid-auto-rows: 1fr;
+                border-radius: 0.0rem;
+                border-style: dotted;
+                border-color: var(--signature);
+            }
+        </style>
     </head>
-    <body>
-        Hello, world!
+    <body class="load">
+
+        <div class="content pad-large flex-x xs:flex-y sm:pad-small">
+            <div class="flex-1 flex-x center-y">
+                <span class="font-big font-bold signature-color">
+                    <a href="#" onclick="return false;">vakye</a>
+                </span>
+            </div>
+            <div class="flex-x">
+                <a class="inline-flex center pad-extra-smol" title="Github" href="https://github.com/vakye" target="_blank">
+                    <div class="inline-block size-medium signature-color">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <title>Github</title>
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="content pad-large sm:pad-small">
+            <div class="csy-large">
+                <div class="csy-medium signature-color">
+                    <h2 style="margin-top:0">works</h2>
+                    <div class="grid marb-stuff">
+                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/huion_driver" target="_blank">
+                            <div class="flex-y">
+                                <div class="font-little-bit-larger font-bold">huion_driver</div>
+                                <div style="font-style: italic; color: var(--white); font-size: 0.8rem">Linux USB device driver for the Huion Inspiroy 1060P</div>
+                            </div>
+                        </a>
+                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/splay" target="_blank">
+                            <div class="flex-y">
+                                <div class="font-little-bit-larger font-bold">splay</div>
+                                <div style="font-style: italic; color: var(--white); font-size: 0.8rem">CLI tool for playing .wav on Linux</div>
+                            </div>
+                        </a>
+                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/finite" target="_blank">
+                            <div class="flex-y">
+                                <div class="font-little-bit-larger font-bold">finite</div>
+                                <div style="font-style: italic; color: var(--white); font-size: 0.8rem">Invaders clone with rouge-like elements</div>
+                            </div>
+                        </a>
+                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/wasm-triangle" target="_blank">
+                            <div class="flex-y">
+                                <div class="font-little-bit-larger font-bold">wasm-triangle</div>
+                                <div style="font-style: italic; color: var(--white); font-size: 0.8rem">WASM Triangle with WebGL2</div>
+                            </div>
+                        </a>
+                        <a style="display:none"></a> <!-- NOTE(vak): Stupid hack to fix last grid item not being of same height :) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content pad-large sm:pad-small">
+            <div class="csy-large">
+                <div class="csy-medium signature-color">
+                    <h2 style="margin-top:0">games (play-in-browser)</h2>
+                    <div class="row-contents">
+                        <a class="border-stuff flex-y padx-stuff pady-stuff round" href="wasm_finite.html" target="_blank">
+                            <div class="flex-x font-little-bit-larger font-bold center-x pad-large">finite</div>
+                            <div class="finite-bg-container round">
+                                <img style="max-width: 100%; border-style: solid; border-width: 0.5rem; border-radius: 1.2rem;" src="finite-bg.png"></img>
+                            </div>
+                            <div class="flex-x font-little-bit-larger font-bold center-x pad-small">player controls</div>
+                            <div class="controls-container padx-stuff pady-stuff">
+                                <div class="pad-extra-smol">W: Move Up</div>
+                                <div class="pad-extra-smol">A: Move Left</div>
+                                <div class="pad-extra-smol">S: Move Down</div>
+                                <div class="pad-extra-smol">D: Move Right</div>
+                                <div class="pad-extra-smol">Space: Shoot</div>
+                                <div class="pad-extra-smol">1: Switch to weapon 1</div>
+                                <div class="pad-extra-smol">2: Switch to weapon 2</div>
+                                <div class="pad-extra-smol">3: Switch to weapon 3</div>
+                                <div style="display:none"></div>
+                            </div>
+                            <div class="flex-x font-little-bit-larger font-bold center-x pad-small">shop controls</div>
+                            <div class="controls-container padx-stuff pady-stuff">
+                                <div class="pad-extra-smol">Q: Prev Item</div>
+                                <div class="pad-extra-smol">E: Next Item</div>
+                                <div class="pad-extra-smol">F: Buy Item</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> 
     </body>
 </html>
+
