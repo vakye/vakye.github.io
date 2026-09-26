@@ -17,7 +17,7 @@
                 --bg: #f5fbfe;
                 --color: #555555;
                 --highlight: var(--white--light);
-                --signature: rgba(130,160,230,255);
+                --signature: rgba(130,160,230,1.0);
             }
 
             html {
@@ -139,6 +139,14 @@
                 grid-auto-rows: 1fr;
             }
 
+            .grid-4 {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                column-gap: 0.0rem;
+                row-gap: 0.0rem;
+                grid-auto-rows: 1fr;
+            }
+
             .row-contents {
                 display: contents;
             }
@@ -199,6 +207,34 @@
                 border-radius: 0.0rem;
                 border-style: dotted;
                 border-color: var(--signature);
+            }
+
+            .fancy-box-overlay {
+                visibility: hidden;
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 8080;
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+                background: rgba(10, 10, 10, 0.5);
+                opacity: 0%;
+            }
+
+            .fancy-box-container {
+                background: var(--bg);
+                color: var(--color);
+                max-width: 36rem;
+                margin: 0 auto;
+                width: 100%;
+                border-radius: 1.2rem;
+                border-style: solid;
+                border-width: 0.2rem;
+                border-color: var(--signature);
+                padding: 1rem;
             }
         </style>
     </head>
@@ -269,42 +305,81 @@
             <div class="csy-large">
                 <div class="csy-medium signature-color">
                     <h2 style="margin-top:0">demos (run-in-browser)</h2>
-                    <div class="row-contents">
-                        <a class="border-stuff flex-y padx-stuff pady-stuff round" href="wasm_triangle.html" target="_blank">
+                    <div class="grid">
+                        <div class="border-stuff flex-y padx-stuff pady-stuff round">
                             <div class="flex-x font-little-bit-larger font-bold center-x pad-large">wasm-triangle</div>
                             <div class="finite-bg-container round">
                                 <img style="max-width: 100%; border-style: solid; border-width: 0.5rem; border-radius: 1.2rem;" src="wasm-triangle-bg.png"></img>
                             </div>
-                        </a>
-
-                        <a class="border-stuff flex-y padx-stuff pady-stuff round" href="wasm_finite.html" target="_blank">
+                            <div class="flex-x center-x" style="gap: 1.0rem">
+                                <a class="flipped-bg-signature pad-large inline-flex round" href="wasm_triangle.html" target="_blank">run</a>
+                            </div>
+                        </div>
+                        <div class="border-stuff flex-y padx-stuff pady-stuff round">
                             <div class="flex-x font-little-bit-larger font-bold center-x pad-large">finite</div>
                             <div class="finite-bg-container round">
                                 <img style="max-width: 100%; border-style: solid; border-width: 0.5rem; border-radius: 1.2rem;" src="finite-bg.png"></img>
                             </div>
-                            <div class="flex-x font-little-bit-larger font-bold center-x pad-small">player controls</div>
-                            <div class="controls-container padx-stuff pady-stuff">
-                                <div class="pad-extra-smol">W: Move Up</div>
-                                <div class="pad-extra-smol">A: Move Left</div>
-                                <div class="pad-extra-smol">S: Move Down</div>
-                                <div class="pad-extra-smol">D: Move Right</div>
-                                <div class="pad-extra-smol">Space: Shoot</div>
-                                <div class="pad-extra-smol">1: Switch to weapon 1</div>
-                                <div class="pad-extra-smol">2: Switch to weapon 2</div>
-                                <div class="pad-extra-smol">3: Switch to weapon 3</div>
-                                <div style="display:none"></div>
+                            <div class="flex-x center-x" style="gap: 1.0rem">
+                                <a class="flipped-bg-signature pad-large inline-flex round" href="wasm_finite.html" target="_blank">run</a>
+                                <a class="flipped-bg-signature pad-large inline-flex round" href="javascript:onclick=OpenFiniteControls()">controls</a>
+                                <a style="display:none"></a>
                             </div>
-                            <div class="flex-x font-little-bit-larger font-bold center-x pad-small">shop controls</div>
-                            <div class="controls-container padx-stuff pady-stuff">
-                                <div class="pad-extra-smol">Q: Prev Item</div>
-                                <div class="pad-extra-smol">E: Next Item</div>
-                                <div class="pad-extra-smol">F: Buy Item</div>
-                            </div>
-                        </a>
+                        </div>
+                        <div style="display:none"></div>
                     </div>
                 </div>
             </div>
         </div> 
+
+        <div id="finite-controls" class="fancy-box-overlay">
+            <div class="fancy-box-container flex-y" tabindex="-1">
+                <div class="signature-color flex-x pad-large center-x font-bold">player controls</div>
+                <div class="grid-4">
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">w: move up</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">a: move left</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">s: move down</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">d: move right</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">1: use weapon 1</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">2: use weapon 2</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">3: use weapon 3</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">space: shoot</div>
+                </div>
+
+                <div class="signature-color flex-x pad-large center-x font-bold">shop controls</div>
+                <div class="grid-4">
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">q: prev item</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">e: next item</div>
+                    <div class="flipped-bg-signature border-stuff flex-y padx-stuff pady-stuff round">f: buy item</div>
+                </div>
+
+                <div class="signature-color flex-x center-x font-smol" style="margin-top: auto;">click anywhere to close!</div>
+            </div>
+        </div>
     </body>
+
+    <script>
+        let Body = document.body;
+        let FiniteControlsDiv = document.getElementById('finite-controls');
+
+        function OpenFiniteControls() {
+            FiniteControlsDiv.style.visibility = 'visible';
+            FiniteControlsDiv.style.opacity = '100%';
+            FiniteControlsDiv.onclick = CloseFiniteControls;
+            Body.style.overflow = "hidden";
+        }
+
+        function CloseFiniteControls() {
+            FiniteControlsDiv.style.opacity = '0%';
+            FiniteControlsDiv.onclick = () => {};
+            Body.style.overflow = "visible";
+
+            // NOTE(vak): Stupid hard-coded 200ms to match that of transition time :]
+            setTimeout(() =>
+            {
+                FiniteControlsDiv.style.visibility = 'hidden';
+            }, 200);
+        }
+    </script>
 </html>
 
