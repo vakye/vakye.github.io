@@ -42,7 +42,7 @@
             }
 
             .content {
-                max-width: 46rem;
+                max-width: 52rem;
                 margin: 0 auto;
                 width: 100%;
             }
@@ -175,6 +175,10 @@
                 align-items: center;
             }
 
+            .stretch {
+                align-items: stretch;
+            }
+
             .finite-bg-container {
                 padding-top: 0.5rem;
                 padding-bottom: 0.5rem;
@@ -201,7 +205,7 @@
     <body class="load">
 
         <div class="content pad-large flex-x xs:flex-y sm:pad-small">
-            <div class="flex-1 flex-x center-y">
+            <div class="flex-1 flex-x stretch">
                 <span class="font-big font-bold signature-color">
                     <a href="#" onclick="return false;">vakye</a>
                 </span>
@@ -231,25 +235,25 @@
                 <div class="csy-medium signature-color">
                     <h2 style="margin-top:0">works</h2>
                     <div class="grid marb-stuff">
-                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/huion_driver" target="_blank">
+                        <a class="flipped-bg-signature flex-y stretch padx-stuff pady-stuff round" href="https://github.com/vakye/huion_driver" target="_blank">
                             <div class="flex-y">
                                 <div class="font-little-bit-larger font-bold">huion_driver</div>
                                 <div style="font-style: italic; color: var(--white); font-size: 0.8rem">Linux USB device driver for the Huion Inspiroy 1060P</div>
                             </div>
                         </a>
-                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/splay" target="_blank">
+                        <a class="flipped-bg-signature flex-y stretch padx-stuff pady-stuff round" href="https://github.com/vakye/splay" target="_blank">
                             <div class="flex-y">
                                 <div class="font-little-bit-larger font-bold">splay</div>
                                 <div style="font-style: italic; color: var(--white); font-size: 0.8rem">CLI tool for playing .wav on Linux</div>
                             </div>
                         </a>
-                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/finite" target="_blank">
+                        <a class="flipped-bg-signature flex-y stretch padx-stuff pady-stuff round" href="https://github.com/vakye/finite" target="_blank">
                             <div class="flex-y">
                                 <div class="font-little-bit-larger font-bold">finite</div>
                                 <div style="font-style: italic; color: var(--white); font-size: 0.8rem">Invaders clone with rouge-like elements</div>
                             </div>
                         </a>
-                        <a class="flipped-bg-signature flex-y padx-stuff pady-stuff round" href="https://github.com/vakye/wasm-triangle" target="_blank">
+                        <a class="flipped-bg-signature flex-y stretch padx-stuff pady-stuff round" href="https://github.com/vakye/wasm-triangle" target="_blank">
                             <div class="flex-y">
                                 <div class="font-little-bit-larger font-bold">wasm-triangle</div>
                                 <div style="font-style: italic; color: var(--white); font-size: 0.8rem">WASM Triangle with WebGL2</div>
@@ -264,8 +268,15 @@
         <div class="content pad-large sm:pad-small">
             <div class="csy-large">
                 <div class="csy-medium signature-color">
-                    <h2 style="margin-top:0">games (play-in-browser)</h2>
+                    <h2 style="margin-top:0">demos (run-in-browser)</h2>
                     <div class="row-contents">
+                        <a class="border-stuff flex-y padx-stuff pady-stuff round" href="wasm_triangle.html" target="_blank">
+                            <div class="flex-x font-little-bit-larger font-bold center-x pad-large">wasm-triangle</div>
+                            <div class="finite-bg-container round">
+                                <img style="max-width: 100%; border-style: solid; border-width: 0.5rem; border-radius: 1.2rem;" src="wasm-triangle-bg.png"></img>
+                            </div>
+                        </a>
+
                         <a class="border-stuff flex-y padx-stuff pady-stuff round" href="wasm_finite.html" target="_blank">
                             <div class="flex-x font-little-bit-larger font-bold center-x pad-large">finite</div>
                             <div class="finite-bg-container round">
