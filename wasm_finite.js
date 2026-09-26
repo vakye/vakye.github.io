@@ -230,7 +230,7 @@ function OnFrame(TimeNow)
 GL.enable(GL.BLEND);
 GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
 
-const RandomSeed = BigInt(performance.now() * 1e9);
+const RandomSeed = BigInt(Math.floor(performance.now() * 1e9));
 WASM.exports.Init(RandomSeed);
 OnResize();
 requestAnimationFrame(OnFrame);
