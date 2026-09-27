@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale="1">
+        <meta name="viewport" content="width=device-width, initial-scale='1'">
         <title>vakye</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/comic-mono@0.0.1/index.css">
         <style>
@@ -356,30 +356,30 @@
                 <div class="signature-color flex-x center-x font-smol" style="margin-top: auto;">click anywhere to close!</div>
             </div>
         </div>
+
+        <script>
+            let Body = document.body;
+            let FiniteControlsDiv = document.getElementById('finite-controls');
+
+            function OpenFiniteControls() {
+                FiniteControlsDiv.style.visibility = 'visible';
+                FiniteControlsDiv.style.opacity = '100%';
+                FiniteControlsDiv.onclick = CloseFiniteControls;
+                Body.style.overflow = "hidden";
+            }
+
+            function CloseFiniteControls() {
+                FiniteControlsDiv.style.opacity = '0%';
+                FiniteControlsDiv.onclick = () => {};
+                Body.style.overflow = "visible";
+
+                // NOTE(vak): Stupid hard-coded 200ms to match that of transition time :]
+                setTimeout(() =>
+                {
+                    FiniteControlsDiv.style.visibility = 'hidden';
+                }, 200);
+            }
+        </script>
     </body>
-
-    <script>
-        let Body = document.body;
-        let FiniteControlsDiv = document.getElementById('finite-controls');
-
-        function OpenFiniteControls() {
-            FiniteControlsDiv.style.visibility = 'visible';
-            FiniteControlsDiv.style.opacity = '100%';
-            FiniteControlsDiv.onclick = CloseFiniteControls;
-            Body.style.overflow = "hidden";
-        }
-
-        function CloseFiniteControls() {
-            FiniteControlsDiv.style.opacity = '0%';
-            FiniteControlsDiv.onclick = () => {};
-            Body.style.overflow = "visible";
-
-            // NOTE(vak): Stupid hard-coded 200ms to match that of transition time :]
-            setTimeout(() =>
-            {
-                FiniteControlsDiv.style.visibility = 'hidden';
-            }, 200);
-        }
-    </script>
 </html>
 
